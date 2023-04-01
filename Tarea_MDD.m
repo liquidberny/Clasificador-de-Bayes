@@ -36,7 +36,7 @@ conteoBenigno=zeros(10,10);
 for c=1:SU(1)
     %vamos a sacar un mapa de cuantos elementos en Train_B son iguales a
     %los elementos del vector unico
-    mapBenigno=Train_B==U(c);
+    mapBenigno=Train_B_Copia==U(c);
     
     %Como el mapa te va a dar ceros y unos le sumamos un uno para no
     %manejar ceros
@@ -54,7 +54,7 @@ U = unique(A);
 SU =size(U);
 conteoMaligno=zeros(10,10);
 for c=1:SU(1)
-    mapMaligno=Train_M==U(c);
+    mapMaligno=Train_M_Copia==U(c);
     conteoMaligno(c,:)=((sum(mapMaligno))+ 1);
 end
 conteoMaligno;
