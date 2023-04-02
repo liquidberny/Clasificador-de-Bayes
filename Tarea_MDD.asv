@@ -106,6 +106,7 @@ TablaNormMaligno =[U,normMalignos];
 %un diagnóstico basado en la probabilidad más alta.
 
 
+Cols=[1,2,3,4,5,6,7,8,9,10];
 % Tomaremos la primera muestra del set test y calculamos la probabilidad de que sea un tumor maligno
 num_reg=1;
 S= Test;
@@ -113,7 +114,7 @@ S= Test;
 ProbsM=Prob_M; 
 %numero de columnas empezamos de 1 ya que eliminamos la primera columna con
 %los identificadores
-num_cols= size(A,1); 
+num_cols= size(Cols,2); 
 for col=1:num_cols
     valor= S(num_reg, col);
     idx= find(TablaFreqMaligno(:, 1)==valor);
@@ -122,14 +123,14 @@ for col=1:num_cols
 end
 
 %Probablididad que la muestra sea benigna
-ProbsB=Prob_B; 
+ProbsM=Prob_B; 
 %numero de columnas empezamos de 1 ya que eliminamos la primera columna con
 %los identificadores
-num_cols= size(A,1); 
+num_cols= size(Cols,2); 
 for col=1:num_cols
     valor= S(num_reg, col);
     idx= find(TablaFreqBenigno(:, 1)==valor);
-    ProbsB = ProbsB .* normBenignos(idx, col);
+    ProbsM = ProbsM .* normMalignos(idx, col);
 
 end
 
